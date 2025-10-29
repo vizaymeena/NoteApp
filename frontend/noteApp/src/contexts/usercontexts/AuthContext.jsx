@@ -2,6 +2,8 @@ import React, { useEffect, useState, createContext } from "react"
 import axios from "axios"
 export let UserContext = createContext()
 
+
+const API = import.meta.env.VITE_API_URL
 export let UserProvider = ({ children }) => {
   let [user, setUser] = useState(null)
   let [profilePic,setProfilePic] = useState(null)

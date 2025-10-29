@@ -6,7 +6,7 @@ import { useNavigate,Link } from 'react-router-dom'
 import { UserContext } from '../contexts/usercontexts/AuthContext'
 import { useContext } from 'react'
 
-const API = import.meta.env.VITE_API_URL;
+const API = import.meta.env.VITE_API_URL
 export default function Login() {
   let navigate = useNavigate()
   let {setUser,setProfilePic} = useContext(UserContext)
