@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import "../App.css"
 
+const API = import.meta.env.VITE_API_URL
+
 function Notes() {
   let [note, setNote] = useState({ title: "", description: "" })
   let [data, setData] = useState([])
@@ -20,7 +22,7 @@ function Notes() {
     try {
       let token = `Bearer ${sessionStorage.getItem("access")}`
       let res = await axios.get(
-        `http://127.0.0.1:8000/notes/?filter=${filter}&page=${page}&page_size=${5}`,
+        `${API}/notes/?filter=${filter}&page=${page}&page_size=${5}`,
         {
           headers: { Authorization: token },
         }
@@ -46,7 +48,7 @@ function Notes() {
   let addNote = async () => {
     try {
       let token = `Bearer ${sessionStorage.getItem("access")}`
-      await axios.post(`http://127.0.0.1:8000/notes/`, note, {
+      await axios.post(`${API}/notes/`, note, {
         headers: { Authorization: token },
       })
       setNote({ title: "", description: "" })
@@ -68,7 +70,7 @@ function Notes() {
   let handleUpdate = async () => {
     try {
       let token = `Bearer ${sessionStorage.getItem("access")}`
-      await axios.put(`http://127.0.0.1:8000/notes/${updateIx}/`, note, {
+      await axios.put(`${API}/notes/${updateIx}/`, note, {
         headers: { Authorization: token },
       })
       setUpdate(false)
@@ -82,7 +84,7 @@ function Notes() {
   let remove = async (id) => {
     try {
       let token = `Bearer ${sessionStorage.getItem("access")}`
-      await axios.delete(`http://127.0.0.1:8000/notes/${id}/`, {
+      await axios.delete(`${API}/notes/${id}/`, {
         headers: { Authorization: token },
       })
       setData((prev) => prev.filter((item) => item.id !== id))
