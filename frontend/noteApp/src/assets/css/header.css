@@ -1,0 +1,185 @@
+/* === Navbar Base === */
+.nav {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(90deg, #1e293b, #0f172a);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* === Left Section (Logo + Menu) === */
+.webhead {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.webhead h1 {
+  color: #f8fafc;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* === Hamburger Icon (Mobile Only) === */
+.hamburger {
+  display: none;
+  color: #f8fafc;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* === Desktop User Section === */
+.userDetails {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-right: 10px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f8fafc;
+}
+
+.userdetail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.username-text {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+.logout-btn:hover {
+  transform: scale(1.1);
+}
+
+/* === Profile Picture & Fallback === */
+.nav-profile-pic,
+.nav-profile-fallback {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-profile-pic {
+  object-fit: cover;
+}
+
+.nav-profile-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-profile-pic:hover,
+.nav-profile-fallback:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+}
+
+/* === Mobile Profile Icon === */
+.mobileUserIcon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+/* === Overlay Menu (Mobile Drawer) === */
+.overlayMenu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 220px;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 5rem 1rem;
+  transition: left 0.3s ease-in-out;
+  color: #f1f5f9;
+  z-index: 999;
+}
+
+.overlayMenu.show {
+  left: 0;
+}
+
+.overlayMenu span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.overlayMenu span:hover {
+  color: #38bdf8;
+}
+
+.overlayMenu .closeMenu {
+  border-bottom: none;
+  align-self: flex-end;
+  padding-bottom: 0;
+}
+
+/* === Responsive (Mobile ≤ 360px) === */
+@media (max-width: 360px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    justify-content: space-between;
+  }
+
+  .webhead {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .webhead h1 {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .userDetails {
+    display: none;
+  }
+
+  .mobileUserIcon {
+    display: flex;
+  }
+}

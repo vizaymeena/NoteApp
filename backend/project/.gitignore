@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.pyo
+*.pyo
+
+# Environment
+.env
+venv/
+env/
+*.env
+.env.*
+
+# Django specific
+db.sqlite3
+media/
+staticfiles/
+*.log
+*.pot
+*.mo
+local_settings.py
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Coverage / Testing
+htmlcov/
+.tox/
+coverage.xml
+.pytest_cache/
