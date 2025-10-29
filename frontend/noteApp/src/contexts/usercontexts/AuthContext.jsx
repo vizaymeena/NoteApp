@@ -2,6 +2,8 @@ import React, { useEffect, useState, createContext } from "react"
 import axios from "axios"
 export let UserContext = createContext()
 
+
+const API = import.meta.env.VITE_API_URL
 export let UserProvider = ({ children }) => {
   let [user, setUser] = useState(null)
   let [profilePic,setProfilePic] = useState(null)
@@ -30,7 +32,7 @@ export let UserProvider = ({ children }) => {
   useEffect(()=>{
     if(!user) return 
     let token = `Bearer + ${sessionStorage.getItem("access")}`
-    axios.get(`http://127.0.0.1:8000/api/queryuser/${user}/`,{
+    axios.get(`${API}/api/queryuser/${user}/`,{
       headers:{
         Authorization:token
       }
