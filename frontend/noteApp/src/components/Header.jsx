@@ -5,6 +5,7 @@ import "../assets/css/header.css"
 import { useNavigate } from "react-router-dom"
 
 export default function Navbar() {
+  
   let navigate = useNavigate()
   let { user, setUser, profilePic } = useContext(UserContext)
   let [isMenuOpen, setIsMenuOpen] = useState(false)

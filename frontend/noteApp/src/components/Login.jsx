@@ -6,7 +6,7 @@ import { useNavigate,Link } from 'react-router-dom'
 import { UserContext } from '../contexts/usercontexts/AuthContext'
 import { useContext } from 'react'
 
-
+const API = import.meta.env.VITE_API_URL;
 export default function Login() {
   let navigate = useNavigate()
   let {setUser,setProfilePic} = useContext(UserContext)
@@ -24,7 +24,7 @@ export default function Login() {
   let submit = async (e) => {
     e.preventDefault()
     try {
-      let res = await axios.post(`http://127.0.0.1:8000/api/login/`, logform, {
+      let res = await axios.post(`${API}/api/login/`, logform, {
         headers: { "Content-Type": "application/json" },
       })
       console.log(res.data)

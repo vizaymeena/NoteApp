@@ -4,6 +4,7 @@ import "../assets/css/signup.css"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../contexts/usercontexts/AuthContext"
 
+const API = import.meta.env.VITE_API_URL
 export default function Signup() {
   let navigate = useNavigate()
   let { setUser } = useContext(UserContext)
@@ -55,7 +56,7 @@ export default function Signup() {
         if (formData[key]) data.append(key, formData[key])
       })
 
-      let res = await axios.post("http://127.0.0.1:8000/api/users/", data, {
+      let res = await axios.post(`${API}/api/users/`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       })
 
