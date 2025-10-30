@@ -23,9 +23,35 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_7h!2n$z#bkd4#(25za*t7#a_4!nw@&%)#ll5v&h4t$tirso1x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "notekeeping-w8fi.onrender.com",   # backend
+    "noteappreact-il35.onrender.com",  # frontend
+    "localhost",                       # local dev
+    "127.0.0.1",
+]
+
+# Allow your frontend origin
+CORS_ALLOWED_ORIGINS = [
+    "https://noteappreact-il35.onrender.com",
+    "http://localhost:5173",
+]
+
+CORS_ALLOW_CREDENTIALS =True
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
 
 
 # Application definition
@@ -53,14 +79,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-# Allow your frontend origin
-CORS_ALLOWED_ORIGINS = [
-    "https://noteappreact-il35.onrender.com",
-    'http://localhost:5173'
-]
-
-CORS_ALLOW_CREDENTIALS =True
-CORS_ALLOW_ALL_ORIGINS = True
 
 
 SIMPLE_JWT = {
@@ -85,7 +103,7 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
