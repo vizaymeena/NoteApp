@@ -28,6 +28,8 @@ class UserView(ModelViewSet):
         except User.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
+
+
 class NotesPagination(PageNumberPagination):
     page_size=5
     page_size_query_param = "page_size"
