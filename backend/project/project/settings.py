@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_7h!2n$z#bkd4#(25za*t7#a_4!nw@&%)#ll5v&h4t$tirso1x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -56,6 +56,7 @@ REST_FRAMEWORK = {
 # Allow your frontend origin
 CORS_ALLOWED_ORIGINS = [
     "https://noteappreact-il35.onrender.com",
+    'http://localhost:5173'
 ]
 
 CORS_ALLOW_CREDENTIALS =True

@@ -18,7 +18,7 @@ class UserView(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    @action(detail=False, methods=['get'], url_path='queryuser/(?P<email>[^/.]+)')
+    @action(detail=False, methods=['get'], url_path=r'queryuser/(?P<email>[^/]+)')
     def query_user(self, request, email=None):
         try:
             user = User.objects.get(email=email)

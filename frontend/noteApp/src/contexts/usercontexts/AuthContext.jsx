@@ -31,8 +31,8 @@ export let UserProvider = ({ children }) => {
 
   useEffect(()=>{
     if(!user) return 
-    let token = `Bearer + ${sessionStorage.getItem("access")}`
-    axios.get(`${API}/api/queryuser/${user}/`,{
+    let token = `Bearer ${sessionStorage.getItem("access")}`
+    axios.get(`${API}/api/users/queryuser/${user}/`,{
       headers:{
         Authorization:token
       }

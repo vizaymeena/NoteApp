@@ -24,10 +24,12 @@ export default function Login() {
   let submit = async (e) => {
     e.preventDefault()
     try {
-      let res = await axios.post(`${API}/api/login/`, logform, {
-        headers: { "Content-Type": "application/json" },
-      })
-      console.log(res.data)
+       let res = await axios.post(`${API}/api/login/`, logform, {
+    headers: { 
+      "Content-Type": "application/json" 
+      },
+      withCredentials: true  
+    })
       
       
       sessionStorage.setItem("user",res.data.email)
