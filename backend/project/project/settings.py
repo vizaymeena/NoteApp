@@ -26,19 +26,29 @@ SECRET_KEY = 'django-insecure-_7h!2n$z#bkd4#(25za*t7#a_4!nw@&%)#ll5v&h4t$tirso1x
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "notekeeping-w8fi.onrender.com",   # backend
-    "note-app-seven-taupe.vercel.app",  # frontend
-    "localhost",                       # local dev
+    "notekeeping-w8fi.onrender.com",  
+    "note-app-seven-taupe.vercel.app", 
+    "localhost",
     "127.0.0.1",
 ]
 
-# Allow your frontend origin
+# CORS
 CORS_ALLOWED_ORIGINS = [
-    "https://note-app-seven-taupe.vercel.app", 
+    "https://note-app-seven-taupe.vercel.app",
     "http://localhost:5173",
 ]
+CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_CREDENTIALS =True
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# CSRF
+CSRF_TRUSTED_ORIGINS = [
+    "https://note-app-seven-taupe.vercel.app",
+    "https://notekeeping-w8fi.onrender.com",
+]
+
+# Fix for HTTPS on Render
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
