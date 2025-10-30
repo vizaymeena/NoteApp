@@ -27,31 +27,18 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "notekeeping-w8fi.onrender.com",   # backend
-    "noteappreact-il35.onrender.com",  # frontend
+    "note-app-seven-taupe.vercel.app",  # frontend
     "localhost",                       # local dev
     "127.0.0.1",
 ]
 
 # Allow your frontend origin
 CORS_ALLOWED_ORIGINS = [
-    "https://noteappreact-il35.onrender.com",
+    "https://note-app-seven-taupe.vercel.app", 
     "http://localhost:5173",
 ]
 
 CORS_ALLOW_CREDENTIALS =True
-
-CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-]
-
 
 
 # Application definition
