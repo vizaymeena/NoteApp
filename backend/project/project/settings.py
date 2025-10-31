@@ -25,19 +25,11 @@ SECRET_KEY = 'django-insecure-_7h!2n$z#bkd4#(25za*t7#a_4!nw@&%)#ll5v&h4t$tirso1x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    "notekeeping-w8fi.onrender.com",  
-    "note-app-seven-taupe.vercel.app", 
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["*"]
 
 # CORS
-CORS_ALLOWED_ORIGINS = [
-    "note-app-git-main-vizaymeenas-projects.vercel.app",
-    "http://localhost:5173",
-]
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 # CORS_ALLOW_ALL_ORIGINS = True
 
