@@ -137,9 +137,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
 
-        print("===============================================================")
-        print("user Details Email:",user.email)
-        print("================================================================")
         # Add custom claims 
         token['email'] = user.email
         
