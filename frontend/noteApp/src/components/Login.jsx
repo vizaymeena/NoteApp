@@ -7,6 +7,7 @@ import { UserContext } from '../contexts/usercontexts/AuthContext'
 import { useContext } from 'react'
 
 const API = import.meta.env.VITE_API_URL
+
 export default function Login() {
   let navigate = useNavigate()
   let {setUser,setProfilePic} = useContext(UserContext)
@@ -22,31 +23,30 @@ export default function Login() {
   }
 
   let submit = async (e) => {
-    e.preventDefault()
-    try {
-       let res = await axios.post(`${API}/api/login/`, logform, {
-    headers: { 
-      "Content-Type": "application/json" 
-      },
-      withCredentials: true  
-    })
+      e.preventDefault();
+      try {
+        const res = await axios.post(`${API}/api/login/`, {
+          email: logform.email,
+          password: logform.password
+        }, {
+          headers: { "Content-Type": "application/json" }
+        })
       
+        sessionStorage.setItem("user",res.data.email)
+        sessionStorage.setItem("access", res.data.access)
+        sessionStorage.setItem("refresh", res.data.refresh)
+        sessionStorage.setItem("profile_pic",res.data.profile_pic)
       
-      sessionStorage.setItem("user",res.data.email)
-      sessionStorage.setItem("access", res.data.access)
-      sessionStorage.setItem("refresh", res.data.refresh)
-      sessionStorage.setItem("profile_pic",res.data.profile_pic)
-      
-    
-      console.log(logform.email)
-      setProfilePic(res.data.profile_pic)
-      setUser(res.data.email)
-      navigate('/')
+        console.log(logform.email)
+        setProfilePic(res.data.profile_pic)
+        setUser(res.data.email)
+        navigate('/')
 
-    } catch (err) {
-      console.error("Login failed", err.response?.data || err.message)
-    }
+      } catch (err) {
+        console.error("Login error:", err.response?.data || err.message);
+      }
   }
+
 
   return (
     <div className="login-container">
