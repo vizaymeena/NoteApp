@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
+    "note-app-seven-taupe.vercel.app",
     "https://note-app-seven-taupe.vercel.app",
     "http://localhost:5173",
 ]
