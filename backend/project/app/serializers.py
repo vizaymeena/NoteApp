@@ -130,33 +130,40 @@ class NotesSerializer(serializers.ModelSerializer):
 
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.contrib.auth import authenticate
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     username_field = "email"
+
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-
-        # Add custom claims 
         token['email'] = user.email
-        
         return token
 
     def validate(self, attrs):
+        email = attrs.get("email")
+        password = attrs.get("password")
+
+        # Authenticate user using email instead of username
+        user = authenticate(request=self.context.get('request'), email=email, password=password)
+        if not user:
+            raise serializers.ValidationError({"detail": "Invalid email or password"})
+
+        # Manually run parent validation after successful authentication
         data = super().validate(attrs)
 
-        # Add user info into response
         request = self.context.get('request')
         profile_pic_url = (
-            request.build_absolute_uri(self.user.profile_pic.url)
-            if self.user.profile_pic else None
+            request.build_absolute_uri(user.profile_pic.url)
+            if getattr(user, "profile_pic", None) else None
         )
 
         data.update({
-            "id": self.user.id,
-            "email": self.user.email,
-            "first_name": self.user.first_name,
-            "last_name": self.user.last_name,
+            "id": user.id,
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
             "profile_pic": profile_pic_url,
         })
         return data
